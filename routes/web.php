@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ChirpController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,9 @@ Route::get('/', function () {
 });
  Route::get('/about',[AboutController::class,'about']);
 
+ Route::resource('chirps', ChirpController::class)
+ ->only(['index', 'store','edit', 'update','destroy'])
+ ->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
