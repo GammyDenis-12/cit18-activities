@@ -61,7 +61,8 @@ class ChirpController extends Controller
  
         return view('chirps.edit', [
             'chirp' => $chirp,
-        ]);
+        ])->with('success','Item created successfully!');
+        
     }
  
     /**
